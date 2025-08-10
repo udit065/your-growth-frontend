@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, TextInput, StyleSheet, Alert, KeyboardAvo
 import axios from 'axios';
 import dayjs from 'dayjs';
 
-const API_URL = 'http://192.168.1.33:5000/entries';
+const API_URL = 'https://your-growth-backend.onrender.com/entries';
 
 export default function HomeScreen() {
     const [hasSubmittedToday, setHasSubmittedToday] = useState(false);

@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, StyleSheet, LayoutAnimation, Pl
 import axios from 'axios';
 import dayjs from 'dayjs';
 
-const API_URL = 'http://192.168.1.33:5000/entries';
+const API_URL = 'https://your-growth-backend.onrender.com/entries';
 
 // Enable animation for Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
