@@ -1,50 +1,24 @@
-# Welcome to your Expo app 👋
+# 🌱 Your Growth (Mobile App)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple daily check-in app that helps you stay consistent. Answer one question each day, see your history, and get a nudge if you're about to miss two days in a row.
 
-## Get started
+**Backend:** [your-growth-backend](https://github.com/udit065/your-growth-backend)
 
-1. Install dependencies
+## Features
+- **Daily check-in** that can be submitted once per day
+- **"Don't miss twice" reminder** when your last entry was two or more days ago
+- **History tab** showing your past entries
+- Tab navigation with Expo Router
 
-   ```bash
-   npm install
-   ```
+## Tech stack
+React Native · Expo (Router, Haptics, Blur) · React Navigation · Axios · Day.js · TypeScript
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+## Run locally
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
+Open the app in Expo Go, or in an Android or iOS emulator. The app talks to the deployed API on Render. To use a local backend, change `API_URL` in `app/screens`.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Author
+**Udit Yadav** · [GitHub](https://github.com/udit065) · [LinkedIn](https://www.linkedin.com/in/udit-yadav065)
