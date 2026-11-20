@@ -143,7 +143,11 @@ async function flushPending() {
 async function pull() {
   const list = await api.list();
   const entries: Record<string, Entry> = {};
-  for (const e of list) entries[e.date] = { date: e.date, response: e.response, updatedAt: e.updatedAt };
+  for (const e of list) {
+    // Ignore anything that isn't a YYYY-MM-DD day key (e.g. legacy data).
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(e.date)) continue;
+    entries[e.date] = { date: e.date, response: e.response, updatedAt: e.updatedAt };
+  }
   // Local changes that haven't reached the server yet win.
   for (const [date, op] of Object.entries(state.pending)) {
     if (op.type === 'put') entries[date] = { ...entries[date], date, response: op.response };
