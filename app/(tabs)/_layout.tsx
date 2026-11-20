@@ -1,46 +1,37 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { StyleSheet, type ColorValue } from 'react-native';
+import { tapFeedback } from '@/components/ui';
+import { useTheme } from '@/constants/theme';
+
+type IconName = keyof typeof Ionicons.glyphMap;
+
+function icon(active: IconName, inactive: IconName) {
+  const TabIcon = ({ color, focused }: { color: ColorValue; focused: boolean }) => (
+    <Ionicons name={focused ? active : inactive} size={24} color={color as string} />
+  );
+  return TabIcon;
+}
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const t = useTheme();
 
   return (
     <Tabs
+      screenListeners={{ tabPress: tapFeedback }}
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: { position: 'absolute' },
-          default: {},
-        }),
+        tabBarActiveTintColor: t.primary,
+        tabBarInactiveTintColor: t.muted,
+        tabBarStyle: { backgroundColor: t.card, borderTopColor: t.border, borderTopWidth: StyleSheet.hairlineWidth },
+        tabBarLabelStyle: { fontSize: 12, fontWeight: '600' },
+        sceneStyle: { backgroundColor: t.background },
+        animation: 'shift',
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="history"
-        options={{
-          title: 'History',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="clock.fill" color={color} />
-          ),
-        }}
-      />
+      <Tabs.Screen name="index" options={{ title: 'Today', tabBarIcon: icon('leaf', 'leaf-outline') }} />
+      <Tabs.Screen name="history" options={{ title: 'History', tabBarIcon: icon('calendar', 'calendar-outline') }} />
+      <Tabs.Screen name="settings" options={{ title: 'Settings', tabBarIcon: icon('settings', 'settings-outline') }} />
     </Tabs>
   );
 }
